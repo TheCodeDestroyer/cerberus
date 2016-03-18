@@ -1,0 +1,20 @@
+{
+  "name": "cerberus",
+  "version": "0.0.1",
+  "description": "Coming soon...",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheCodeDestroyer/cerberus.git"
+  },
+  "keywords": [],
+  "author": "Nace Logar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheCodeDestroyer/cerberus/issues"
+  },
+  "homepage": "https://github.com/TheCodeDestroyer/cerberus#readme"
+}
