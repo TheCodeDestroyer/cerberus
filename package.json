@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/TheCodeDestroyer/cerberus/issues"
   },
-  "homepage": "https://github.com/TheCodeDestroyer/cerberus#readme"
+  "homepage": "https://github.com/TheCodeDestroyer/cerberus#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "morgan": "^1.7.0"
+  }
 }
