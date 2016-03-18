@@ -6,12 +6,13 @@ import rimraf from 'rimraf';
 import run from 'run-sequence';
 
 const rootPaths = {
-    src: './src',
+    srcServer: './src/server',
+    srcPublic: './src/public',
     dest: './app'
 };
 
 const paths = {
-    srcJs: `${rootPaths.src}/**/*.js`
+    srcServerJs: `${rootPaths.srcServer}/**/*.js`
 };
 
 let express;
@@ -29,7 +30,7 @@ gulp.task('clean', cb => {
 });
 
 gulp.task('babel', shell.task([
-    `babel ${rootPaths.src} --out-dir ${rootPaths.dest}`
+    `babel ${rootPaths.srcServer} --out-dir ${rootPaths.dest} --sourceRoot=${rootPaths.srcServer}`
 ]));
 
 gulp.task('server', () => {
@@ -42,7 +43,7 @@ gulp.task('restart', () => {
 
 gulp.task('watch', () => {
     return watch([
-        paths.srcJs
+        paths.srcServerJs
     ], () => {
         gulp.start('build');
     });
