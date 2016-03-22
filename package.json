@@ -4,7 +4,7 @@
   "description": "Coming soon...",
   "main": "index.js",
   "scripts": {
-    "start": "node ./app/index.js",
+    "start": "node ./dist/app/index.js",
     "test": "gulp test"
   },
   "repository": {

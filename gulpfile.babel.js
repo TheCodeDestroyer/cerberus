@@ -8,7 +8,8 @@ import run from 'run-sequence';
 const rootPaths = {
     srcServer: './src/server',
     srcPublic: './src/public',
-    dest: './app'
+    destServer: './dist/app',
+    destPublic: './dist/app'
 };
 
 const paths = {
@@ -26,15 +27,15 @@ gulp.task('build', cb => {
 });
 
 gulp.task('clean', cb => {
-    rimraf(rootPaths.dest, cb);
+    rimraf(rootPaths.destServer, cb);
 });
 
 gulp.task('babel', shell.task([
-    `babel ${rootPaths.srcServer} --out-dir ${rootPaths.dest} --sourceRoot=${rootPaths.srcServer}`
+    `babel ${rootPaths.srcServer} --out-dir ${rootPaths.destServer} --sourceRoot=${rootPaths.srcServer}`
 ]));
 
 gulp.task('server', () => {
-    express = server.new(rootPaths.dest);
+    express = server.new(rootPaths.destServer);
 });
 
 gulp.task('restart', () => {
