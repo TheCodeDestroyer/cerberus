@@ -1,4 +1,9 @@
-import corePaths from './corePaths';
+const corePaths = {
+    src: './src',
+    dest: './dist',
+    app: 'app',
+    public: 'public'
+};
 
 const paths = {
     srcServer: `${corePaths.src}/${corePaths.app}/`,
