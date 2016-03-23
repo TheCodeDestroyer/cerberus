@@ -2,9 +2,9 @@
   "name": "cerberus",
   "version": "0.0.1",
   "description": "Coming soon...",
-  "main": "index.js",
+  "main": "app/index.js",
   "scripts": {
-    "start": "node ./dist/app/index.js",
+    "start": "gulp default",
     "test": "gulp test"
   },
   "repository": {
