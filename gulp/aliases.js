@@ -6,5 +6,5 @@ gulp.task('default', cb => {
 });
 
 gulp.task('build', cb => {
-    run('clean', 'babel', 'restart', cb);
+    run('clean', 'babelServer', 'restart', cb);
 });
