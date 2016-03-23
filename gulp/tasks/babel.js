@@ -13,6 +13,6 @@ gulp.task('babelServer', () => {
     return gulp.src(paths.srcServerJs)
     .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
     .pipe(babel(assign({}, babelOptions.server())))
-    .pipe(sourcemaps.write({ includeContent: false, sourceRoot: '/src' }))
+    .pipe(sourcemaps.write({ includeContent: false, sourceRoot: paths.srcServer }))
     .pipe(gulp.dest(paths.destServer));
 });
