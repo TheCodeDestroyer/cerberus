@@ -1,5 +1,4 @@
 import gulp from 'gulp';
-import watch from 'gulp-watch';
 import run from 'run-sequence';
 
 gulp.task('default', cb => {

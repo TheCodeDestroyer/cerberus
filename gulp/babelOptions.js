@@ -21,7 +21,7 @@ babelOptions.base = function() {
 
 
 babelOptions.system = function() {
-    var options = babelOptions.base();
+    let options = babelOptions.base();
     options.presets = ['es2015-loose', 'stage-1'];
     options.plugins = [
         'transform-es2015-modules-systemjs',
@@ -33,7 +33,7 @@ babelOptions.system = function() {
 };
 
 babelOptions.es2015 = function() {
-    var options = babelOptions.base();
+    let options = babelOptions.base();
     options.presets = ['stage-1'];
     options.plugins = [
         'syntax-flow',
@@ -44,8 +44,8 @@ babelOptions.es2015 = function() {
 };
 
 babelOptions.server = function() {
-    var options = babelOptions.base();
-    options.presets = [ "es2015-node5", "stage-0" ];
+    let options = babelOptions.base();
+    options.presets = [ 'es2015-node5', 'stage-0' ];
     return options;
 };
 
