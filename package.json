@@ -42,9 +42,19 @@
     "gulp-shell": "^0.5.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-watch": "^4.3.5",
+    "jspm": "^0.16.31",
     "object.assign": "^4.0.3",
     "require-dir": "^0.3.0",
     "rimraf": "^2.5.2",
     "run-sequence": "^1.1.5"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "dist/app",
+      "packages": "jspm_packages"
+    },
+    "configFile": "jspmConfig.js",
+    "dependencies": {},
+    "devDependencies": {}
   }
 }
