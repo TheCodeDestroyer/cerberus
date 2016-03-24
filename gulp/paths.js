@@ -10,7 +10,8 @@ const paths = {
     srcPublic: `${corePaths.src}/${corePaths.public}/`,
     destServer: `${corePaths.dest}/${corePaths.app}/`,
     destPublic: `${corePaths.dest}/${corePaths.public}/`,
-    srcServerJs: `${corePaths.src}/${corePaths.app}/**/*.js`
+    srcServerJs: `${corePaths.src}/${corePaths.app}/**/*.js`,
+    srcPublicJs: `${corePaths.src}/${corePaths.public}/**/*.js`
 };
 
 export default paths;
