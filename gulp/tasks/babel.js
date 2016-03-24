@@ -16,3 +16,11 @@ gulp.task('babelServer', () => {
     .pipe(sourcemaps.write({ includeContent: false, sourceRoot: paths.srcServer }))
     .pipe(gulp.dest(paths.destServer));
 });
+
+gulp.task('babelPublic', () => {
+    gulp.src(paths.srcPublicJs)
+    .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
+    .pipe(babel(assign({}, babelOptions.system())))
+    .pipe(sourcemaps.write({ includeContent: false, sourceRoot: paths.srcPublic }))
+    .pipe(gulp.dest(paths.destPublic));
+});
