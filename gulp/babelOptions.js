@@ -32,17 +32,6 @@ babelOptions.system = function() {
     return options;
 };
 
-babelOptions.es2015 = function() {
-    let options = babelOptions.base();
-    options.presets = ['stage-1'];
-    options.plugins = [
-        'syntax-flow',
-        'transform-decorators-legacy',
-        'transform-flow-strip-types'
-    ];
-    return options;
-};
-
 babelOptions.server = function() {
     let options = babelOptions.base();
     options.presets = [ 'es2015-node5', 'stage-0' ];
