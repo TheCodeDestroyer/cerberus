@@ -1,5 +1,5 @@
 System.config({
-  baseURL: "/dist/public",
+  baseURL: "/",
   defaultJSExtensions: true,
   transpiler: false,
   paths: {
