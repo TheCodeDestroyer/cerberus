@@ -6,5 +6,9 @@ gulp.task('default', cb => {
 });
 
 gulp.task('build', cb => {
-    run('clean', 'babelServer', 'restart', cb);
+    run('clean', 'babel', 'restart', cb);
+});
+
+gulp.task('babel', cb => {
+    run('babelServer', 'babelPublic', cb);
 });
