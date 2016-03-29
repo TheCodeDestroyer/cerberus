@@ -3,7 +3,7 @@ System.config({
   defaultJSExtensions: true,
   transpiler: false,
   paths: {
-    "npm:*": "../../jspm_packages/npm/*"
+    "npm:*": "jspm_packages/npm/*"
   },
 
   map: {
