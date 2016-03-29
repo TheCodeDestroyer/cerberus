@@ -4,6 +4,7 @@
   "description": "Coming soon...",
   "main": "app/index.js",
   "scripts": {
+    "postinstall": "jspm install",
     "start": "gulp default",
     "test": "gulp test"
   },
@@ -51,10 +52,6 @@
     "run-sequence": "^1.1.5"
   },
   "jspm": {
-    "directories": {
-      "baseURL": "/",
-      "packages": "jspm_packages"
-    },
     "configFile": "jspmConfig.js",
     "dependencies": {
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1.2.0",
