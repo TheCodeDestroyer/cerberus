@@ -8,7 +8,7 @@ const app = express();
 // const dev = env === 'development';
 const port = process.env.PORT || 8080;
 
-app.use(express.static(`${__dirname}/../public`));
+app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
