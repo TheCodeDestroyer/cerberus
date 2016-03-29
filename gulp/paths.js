@@ -6,6 +6,7 @@ const corePaths = {
 };
 
 const paths = {
+    dest: corePaths.dest,
     srcServer: `${corePaths.src}/${corePaths.app}/`,
     srcPublic: `${corePaths.src}/${corePaths.public}/`,
     destServer: `${corePaths.dest}/${corePaths.app}/`,
