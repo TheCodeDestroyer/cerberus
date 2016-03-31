@@ -6,9 +6,13 @@ gulp.task('default', cb => {
 });
 
 gulp.task('build', cb => {
-    run('clean', 'babel', 'restart', cb);
+    run('clean', 'babel', 'copy', 'restart', cb);
 });
 
 gulp.task('babel', cb => {
     run('babelServer', 'babelPublic', cb);
+});
+
+gulp.task('copy', cb => {
+    run('copyViews', 'copyJspm', cb);
 });
