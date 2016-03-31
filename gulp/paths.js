@@ -12,7 +12,8 @@ const paths = {
     destServer: `${corePaths.dest}/${corePaths.server}/`,
     destPublic: `${corePaths.dest}/${corePaths.public}/`,
     srcServerJs: `${corePaths.src}/${corePaths.server}/**/*.js`,
-    srcPublicJs: `${corePaths.src}/${corePaths.public}/**/*.js`
+    srcPublicJs: `${corePaths.src}/${corePaths.public}/**/*.js`,
+    srcPublicHtml: `${corePaths.src}/${corePaths.public}/**/*.html`
 };
 
 export default paths;
