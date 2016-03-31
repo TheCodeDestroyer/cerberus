@@ -6,7 +6,6 @@ import yargs from 'yargs';
 
 const argv = yargs.argv;
 const currentEnv = process.env.NODE_ENV = argv.env || process.env.NODE_ENV || 'dev';
-const dev = currentEnv === 'dev';
 const port = process.env.PORT || 8080;
 let app = express();
 
@@ -17,5 +16,5 @@ app.use(cors());
 app.use(morgan('dev'));
 
 app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
+    console.log(`${currentEnv.toUpperCase()} - Server is listening on port ${port}`);
 });
