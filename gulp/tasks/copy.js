@@ -4,8 +4,8 @@ import paths from '../paths';
 gulp.task('copyJspm', () => {
     gulp.src([
         './jspmConfig.js',
-        './jspm_packages'
-    ])
+        './jspm_packages/**/*'
+    ], { base: './' })
     .pipe(gulp.dest(paths.destPublic));
 });
 
