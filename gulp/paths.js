@@ -1,17 +1,17 @@
 const corePaths = {
     src: './src',
     dest: './dist',
-    app: 'app',
+    server: 'server',
     public: 'public'
 };
 
 const paths = {
     dest: corePaths.dest,
-    srcServer: `${corePaths.src}/${corePaths.app}/`,
+    srcServer: `${corePaths.src}/${corePaths.server}/`,
     srcPublic: `${corePaths.src}/${corePaths.public}/`,
-    destServer: `${corePaths.dest}/${corePaths.app}/`,
+    destServer: `${corePaths.dest}/${corePaths.server}/`,
     destPublic: `${corePaths.dest}/${corePaths.public}/`,
-    srcServerJs: `${corePaths.src}/${corePaths.app}/**/*.js`,
+    srcServerJs: `${corePaths.src}/${corePaths.server}/**/*.js`,
     srcPublicJs: `${corePaths.src}/${corePaths.public}/**/*.js`
 };
 
