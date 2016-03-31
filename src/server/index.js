@@ -16,10 +16,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(morgan('dev'));
 
-if (!dev) {
-    app.listen(port, () => {
-        console.log(`Server is listening on port ${port}`);
-    });
-}
-
-export default app;
+app.listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
+});
