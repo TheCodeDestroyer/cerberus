@@ -4,8 +4,12 @@ import paths from '../paths';
 
 gulp.task('watch', () => {
     return watch([
-        paths.srcServerJs
+        paths.srcServerJs,
+        paths.srcPublicJs,
+        paths.srcPublicHtml,
+        paths.srcSass
     ], () => {
+        console.log('server');
         gulp.start('build');
     });
 });
