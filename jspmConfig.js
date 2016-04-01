@@ -3,13 +3,18 @@ System.config({
   defaultJSExtensions: true,
   transpiler: false,
   paths: {
-    "npm:*": "jspm_packages/npm/*"
+    "npm:*": "jspm_packages/npm/*",
+    "github:*": "jspm_packages/github/*"
   },
 
   map: {
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1.2.0",
+    "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1.2.0",
     "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.2.0",
     "aurelia/framework": "github:aurelia/framework@0.18.0",
+    "bootstrap": "github:twbs/bootstrap@3.3.6",
+    "font-awesome": "npm:font-awesome@4.5.0",
+    "whatwg-fetch": "npm:whatwg-fetch@0.11.0",
     "github:aurelia/binding@0.11.4": {
       "aurelia-metadata": "github:aurelia/metadata@0.10.1",
       "aurelia-pal": "github:aurelia/pal@0.3.0",
@@ -67,6 +72,9 @@ System.config({
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
+    },
+    "github:twbs/bootstrap@3.3.6": {
+      "jquery": "github:components/jquery@2.2.1"
     },
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
@@ -191,6 +199,9 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+    },
+    "npm:font-awesome@4.5.0": {
+      "css": "github:systemjs/plugin-css@0.1.20"
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
