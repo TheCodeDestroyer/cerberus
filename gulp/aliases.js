@@ -2,15 +2,23 @@ import gulp from 'gulp';
 import run from 'run-sequence';
 
 gulp.task('dev', cb => {
-    run('server', 'build', 'watch', cb);
+    run('startServer', 'build', 'watch', cb);
 });
 
 gulp.task('build', cb => {
-    run('clean', 'babel', 'copy', 'restart', cb);
+    run('clean', 'buildServer', 'buildPublic', 'restartServer', cb);
 });
 
-gulp.task('babel', cb => {
-    run('babelServer', 'babelPublic', cb);
+gulp.task('watch', cb => {
+    run('watch', cb);
+});
+
+gulp.task('buildServer', cb => {
+    run('babelServer', cb);
+});
+
+gulp.task('buildPublic', cb => {
+    run('babelPublic', 'sass', 'copy', cb);
 });
 
 gulp.task('copy', cb => {
