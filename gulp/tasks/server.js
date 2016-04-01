@@ -4,11 +4,11 @@ import paths from '../paths';
 
 let express;
 
-gulp.task('server', () => {
+gulp.task('startServer', () => {
     express = server.new(paths.dest + '/index.js');
 });
 
-gulp.task('restart', cb => {
+gulp.task('restartServer', cb => {
     if (express) {
         setTimeout(() => {
             express.start.bind(express)();
