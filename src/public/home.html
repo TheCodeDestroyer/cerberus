@@ -1,0 +1,27 @@
+<template>
+    <section>
+        <h2>${heading}</h2>
+
+        <div class="container">
+            <div class="col-md-4">
+                <button click.trigger="callServer('kodi')" type="button" class="btn btn-lg btn-info">
+                    Kodi
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button click.trigger="callServer('moonlight')" type="button" class="btn btn-lg btn-info">
+                    Moonlight
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button click.trigger="callServer('nodeVersion')" type="button" class="btn btn-lg btn-info">
+                    Node Version
+                </button>
+            </div>
+        </div>
+        <div class="jumbotron">
+            <h1>Exectution Result</h1>
+            <p>${result}</p>
+        </div>
+    </section>
+</template>
