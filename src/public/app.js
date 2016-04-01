@@ -1,13 +1,10 @@
 export class App {
-    heading = 'Welcome to Aurelia!';
-    firstName = 'John';
-    lastName = 'Doe';
+    configureRouter(config, router) {
+        config.title = 'Cerberus';
+        config.map([
+            { route: ['', 'home'], name: 'home', moduleId: './home', nav: true, title: 'Home' }
+        ]);
 
-    get fullName() {
-        return `${this.firstName} ${this.lastName}`;
-    }
-
-    submit() {
-        alert(`Welcome, ${this.fullName}!`);
+        this.router = router;
     }
 }
