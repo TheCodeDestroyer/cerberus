@@ -21,13 +21,20 @@ app.listen(port, () => {
 });
 
 app.get('/kodi', function(req, res) {
-    let result = shell.exec('runKodi');
+    let result = shell.exec('runKodi').output;
     console.log(result);
-    res.send(result);
+    res.send({ result: result });
 });
 
 app.get('/moonlight', function(req, res) {
-    let result = shell.exec('runKodi');
+    let result = shell.exec('runKodi').output;
     console.log(result);
-    res.send(result);
+    res.send({ result: result });
 });
+
+app.get('/nodeVersion', function(req, res) {
+    let result = shell.exec('node --version').output;
+    console.log(result);
+    res.send({ result: result });
+});
+
