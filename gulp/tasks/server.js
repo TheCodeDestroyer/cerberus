@@ -9,8 +9,13 @@ gulp.task('server', () => {
 });
 
 gulp.task('restart', cb => {
-    setTimeout(() => {
-        express.start.bind(express)();
+    if (express) {
+        setTimeout(() => {
+            express.start.bind(express)();
+            cb();
+        }, 2000);
+    }
+    else {
         cb();
-    }, 2000);
+    }
 });
