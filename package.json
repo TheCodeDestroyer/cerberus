@@ -2,7 +2,7 @@
   "name": "cerberus",
   "version": "0.0.1",
   "description": "Coming soon...",
-  "main": "app/index.js",
+  "main": "index.js",
   "scripts": {
     "postinstall": "jspm install",
     "start": "gulp dev",
