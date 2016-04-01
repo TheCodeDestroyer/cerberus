@@ -5,8 +5,10 @@
         <title>Cerberus</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <require from="bootstrap/css/bootstrap.css"></require>
-        <require from="font-awesome/css/font-awesome.css"></require>
+        <link rel="stylesheet" href="../../jspm_packages/github/twbs/bootstrap@3.3.6/css/bootstrap.css">
+        <link rel="stylesheet" href="../../jspm_packages/npm/font-awesome@4.5.0/css/font-awesome.css">
+
+        <link rel="stylesheet" href="css/main.css">
     </head>
     <body aurelia-app>
         <div class="splash">
@@ -19,5 +21,8 @@
         <script>
             System.import('aurelia-bootstrapper');
         </script>
+
+        <require from="bootstrap/css/bootstrap.css"></require>
+        <require from="font-awesome/css/font-awesome.css"></require>
     </body>
 </html>
