@@ -1,5 +1,5 @@
 {
-  "name": "cerberus",
+  "name": "cerberus.js",
   "version": "0.0.15",
   "description": "Coming soon...",
   "main": "./gulp/data/bin/cerberus",
