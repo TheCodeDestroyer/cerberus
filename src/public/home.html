@@ -4,17 +4,17 @@
 
         <div class="container">
             <div class="col-md-4">
-                <button click.trigger="callServer('kodi')" type="button" class="btn btn-lg btn-info">
+                <button click.trigger="callServer('/runKodi')" type="button" class="btn btn-lg btn-info">
                     Kodi
                 </button>
             </div>
             <div class="col-md-4">
-                <button click.trigger="callServer('moonlight')" type="button" class="btn btn-lg btn-info">
+                <button click.trigger="callServer('/runMoonlight')" type="button" class="btn btn-lg btn-info">
                     Moonlight
                 </button>
             </div>
             <div class="col-md-4">
-                <button click.trigger="callServer('nodeVersion')" type="button" class="btn btn-lg btn-info">
+                <button click.trigger="callServer('/node --version')" type="button" class="btn btn-lg btn-info">
                     Node Version
                 </button>
             </div>

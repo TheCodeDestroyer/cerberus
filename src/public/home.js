@@ -11,7 +11,7 @@ export class Home {
         http.configure(config => {
             config
             .useStandardConfiguration()
-            .withBaseUrl('/');
+            .withBaseUrl('/executeShell');
         });
 
         this.http = http;
@@ -20,6 +20,9 @@ export class Home {
     callServer(uri) {
         return this.http.fetch(uri)
         .then(response => response.json())
-        .then(responseObject => { this.result = responseObject.result; });
+        .then(responseObject => {
+            console.log(responseObject);
+            this.result = responseObject.execResult; 
+        });
     }
 }
