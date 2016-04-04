@@ -3,8 +3,8 @@ import shell from 'shelljs';
 
 let router = express.Router();
 
-router.get('/:id', function(req, res) {
-    let command = req.params.id;
+router.get('/:rawCommand', function(req, res) {
+    let command = req.params.rawCommand;
 
     executeShell(command);
 
