@@ -1,8 +1,8 @@
 {
   "name": "cerberus",
-  "version": "0.0.7",
+  "version": "0.0.13",
   "description": "Coming soon...",
-  "main": "index.js",
+  "main": "./bin/cerberus",
   "scripts": {
     "postinstall": "jspm install",
     "start": "gulp dev",
@@ -53,6 +53,10 @@
     "require-dir": "^0.3.0",
     "rimraf": "^2.5.2",
     "run-sequence": "^1.1.5"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "cerberus": "./bin/cerberus"
   },
   "jspm": {
     "configFile": "jspmConfig.js",
