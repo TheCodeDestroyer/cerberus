@@ -3,25 +3,28 @@
         <h2>${heading}</h2>
 
         <div class="container">
-            <div class="col-md-4">
-                <button click.trigger="callServer('/runKodi')" type="button" class="btn btn-lg btn-info">
+            <div class="row row-spacing">
+                <button click.trigger="callServer('/runKodi')" type="button" class="btn btn-lg btn-info col-md-4 col-sm-12 row-spacing">
                     Kodi
                 </button>
-            </div>
-            <div class="col-md-4">
-                <button click.trigger="callServer('/runMoonlight')" type="button" class="btn btn-lg btn-info">
+                <button click.trigger="callServer('/runMoonlight')" type="button" class="btn btn-lg btn-info col-md-4 col-sm-12 row-spacing">
                     Moonlight
                 </button>
-            </div>
-            <div class="col-md-4">
-                <button click.trigger="callServer('/node --version')" type="button" class="btn btn-lg btn-info">
+                <button click.trigger="callServer('/node --version')" type="button" class="btn btn-lg btn-info col-md-4 col-sm-12 row-spacing">
                     Node Version
                 </button>
             </div>
-        </div>
-        <div class="jumbotron">
-            <h1>Exectution Result</h1>
-            <p>${result}</p>
+
+            <div class="row row-spacing">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Execution Result</h3>
+                    </div>
+                    <div class="panel-body">
+                        ${result}
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </template>
