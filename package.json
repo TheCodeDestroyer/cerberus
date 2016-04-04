@@ -4,7 +4,7 @@
   "description": "Coming soon...",
   "main": "./bin/cerberus",
   "scripts": {
-    "postinstall": "jspm install",
+    "postinstall": "jspm install && gulp build",
     "start": "gulp dev",
     "test": "gulp test"
   },
