@@ -1,11 +1,11 @@
 {
   "name": "cerberus",
-  "version": "0.0.13",
+  "version": "0.0.15",
   "description": "Coming soon...",
-  "main": "./bin/cerberus",
+  "main": "./gulp/data/bin/cerberus",
   "scripts": {
     "postinstall": "jspm install && gulp build",
-    "start": "gulp dev",
+    "start": "./gulp/data/bin/cerberus",
     "test": "gulp test"
   },
   "repository": {
@@ -56,7 +56,7 @@
   },
   "preferGlobal": true,
   "bin": {
-    "cerberus": "./bin/cerberus"
+    "cerberus": "./gulp/data/bin/cerberus"
   },
   "jspm": {
     "configFile": "jspmConfig.js",
