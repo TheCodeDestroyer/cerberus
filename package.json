@@ -1,6 +1,6 @@
 {
   "name": "cerberus.js",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Coming soon...",
   "main": "./gulp/data/bin/cerberus",
   "scripts": {
@@ -23,6 +23,7 @@
     "body-parser": "^1.15.0",
     "cors": "^2.7.1",
     "express": "^4.13.4",
+    "mongoose": "^4.4.11",
     "morgan": "^1.7.0",
     "shelljs": "^0.6.0",
     "yargs": "^4.3.2"
