@@ -1,16 +1,14 @@
 <template>
     <section>
-        <h2>${heading}</h2>
-
         <div class="container">
             <div class="row row-spacing">
-                <button click.trigger="callServer('/runKodi')" type="button" class="btn btn-lg btn-info col-md-4 col-sm-12 row-spacing">
+                <button click.trigger="callServer('/runKodi')" type="button" class="btn btn-lg btn-info col-md-4 col-sm-12 button-spacing">
                     Kodi
                 </button>
-                <button click.trigger="callServer('/runMoonlight')" type="button" class="btn btn-lg btn-info col-md-4 col-sm-12 row-spacing">
+                <button click.trigger="callServer('/runMoonlight')" type="button" class="btn btn-lg btn-info col-md-3 col-sm-12 button-spacing">
                     Moonlight
                 </button>
-                <button click.trigger="callServer('/node --version')" type="button" class="btn btn-lg btn-info col-md-4 col-sm-12 row-spacing">
+                <button click.trigger="callServer('/node --version')" type="button" class="btn btn-lg btn-info col-md-4 col-sm-12 button-spacing">
                     Node Version
                 </button>
             </div>
