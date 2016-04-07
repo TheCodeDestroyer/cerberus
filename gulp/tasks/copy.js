@@ -23,3 +23,18 @@ gulp.task('copyNpmRequirements', () => {
     ])
     .pipe(gulp.dest(paths.dest));
 });
+
+gulp.task('copyPackageJson', () => {
+    gulp.src('./package.json')
+    .pipe(jEditor((json) => {
+        delete json.devDependencies;
+        delete json.scripts.postinstall;
+        delete json.scripts.test;
+        delete json.jspm;
+        json.start = './bin/cerberus';
+        json.bin.cerberus = './bin/cerberus';
+
+        return json;
+    }))
+    .pipe(gulp.dest(paths.dest));
+});
