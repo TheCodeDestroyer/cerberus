@@ -18,7 +18,8 @@ const paths = {
     srcPublicJs: `${corePaths.src}/${corePaths.public}/**/*.js`,
     srcPublicHtml: `${corePaths.src}/${corePaths.public}/**/*.html`,
     srcSass: `${corePaths.src}/${corePaths.sass}/main.scss`,
-    destSass: `${corePaths.dest}/${corePaths.public}/${corePaths.css}`
+    destSass: `${corePaths.dest}/${corePaths.public}/${corePaths.css}`,
+    masterClone: '.masterClone'
 };
 
 export default paths;
