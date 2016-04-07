@@ -12,7 +12,10 @@ router.get('/:rawCommand', function(req, res) {
 });
 
 let executeShell = shellCommand => {
-    shell.exec(shellCommand, { async: true })
+    let childProcess = shell.exec(shellCommand, { async: true });
+    childProcess.stdout.on('data', (data) => {
+        //TODO: Push to client
+    });
 };
 
 export default router;
