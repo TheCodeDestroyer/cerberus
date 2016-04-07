@@ -1,6 +1,6 @@
 {
   "name": "cerberus.js",
-  "version": "0.0.17",
+  "version": "0.0.19",
   "description": "Coming soon...",
   "main": "./gulp/data/bin/cerberus",
   "scripts": {
@@ -42,6 +42,7 @@
     "eslint": "^2.4.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
+    "gulp-bump": "^2.1.0",
     "gulp-live-server": "0.0.29",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
