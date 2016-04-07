@@ -78,3 +78,4 @@ node_modules
 # Other
 dist
 jspm_packages
+.masterClone
