@@ -14,6 +14,7 @@ System.config({
     "aurelia/framework": "github:aurelia/framework@0.18.0",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "font-awesome": "npm:font-awesome@4.5.0",
+    "moment": "npm:moment@2.12.0",
     "whatwg-fetch": "npm:whatwg-fetch@0.11.0",
     "github:aurelia/binding@0.11.4": {
       "aurelia-metadata": "github:aurelia/metadata@0.10.1",
