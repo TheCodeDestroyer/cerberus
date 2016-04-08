@@ -1,4 +1,6 @@
 <template>
+    <require from="./converters/dateFormat"></require>
+
     <section>
         <div class="container">
             <div class="row row-spacing">
@@ -19,7 +21,11 @@
                         <h3 class="panel-title">Execution Result</h3>
                     </div>
                     <div class="panel-body">
-                        ${result}
+                        <ul class="list-group">
+                            <li repeat.for="consoleOutput of consoleOutputList" class="list-group-item">
+                                [${consoleOutput.timestamp | dateFormat}] - ${consoleOutput.output}
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

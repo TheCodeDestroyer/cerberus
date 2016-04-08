@@ -21,13 +21,18 @@ System.register(['aurelia-framework', 'aurelia-fetch-client', 'whatwg-fetch'], f
                     _classCallCheck(this, Home);
 
                     this.heading = 'Home';
-                    this.result = '';
+                    this.consoleOutputList = [];
+                    this.socket = undefined;
+
+                    this.socket = io();
 
                     http.configure(function (config) {
                         config.useStandardConfiguration().withBaseUrl('/executeShell');
                     });
 
                     this.http = http;
+
+                    this.registerShellListener();
                 }
 
                 Home.prototype.callServer = function callServer(uri) {
@@ -36,8 +41,15 @@ System.register(['aurelia-framework', 'aurelia-fetch-client', 'whatwg-fetch'], f
                     return this.http.fetch(uri).then(function (response) {
                         return response.json();
                     }).then(function (responseObject) {
-                        console.log(responseObject);
-                        _this.result = responseObject.execResult;
+                        _this.consoleOutputList.push(responseObject);
+                    });
+                };
+
+                Home.prototype.registerShellListener = function registerShellListener() {
+                    var _this2 = this;
+
+                    this.socket.on('shellLog', function (consoleOutput) {
+                        _this2.consoleOutputList.push(consoleOutput);
                     });
                 };
 
