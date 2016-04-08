@@ -1,6 +1,6 @@
 {
   "name": "cerberus.js",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Coming soon...",
   "main": "./gulp/data/bin/cerberus",
   "scripts": {
