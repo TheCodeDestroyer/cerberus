@@ -24,6 +24,8 @@ export class Home {
     }
 
     callServer(uri) {
+        this.consoleOutputList = [];
+        
         return this.http.fetch(uri)
         .then(response => response.json())
         .then(responseObject => {

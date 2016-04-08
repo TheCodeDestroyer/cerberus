@@ -62,7 +62,6 @@ gulp.task('npmPublish', (cb) => {
     var npmExec = shell.which('npm');
     
     shell.exec(`${npmExec} publish ${paths.masterClone}`, () => {
-        console.log('done');
         cb();
     });
 });
