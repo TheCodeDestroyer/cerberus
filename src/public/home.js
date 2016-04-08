@@ -1,13 +1,17 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
+// import io from 'socket.io-client';
 import 'whatwg-fetch';
 
 @inject(HttpClient)
 export class Home {
     heading = 'Home';
-    result = '';
+    consoleOutputList = [];
+    socket = undefined;
 
     constructor(http) {
+        this.socket = io();
+        
         http.configure(config => {
             config
             .useStandardConfiguration()
@@ -15,14 +19,21 @@ export class Home {
         });
 
         this.http = http;
+
+        this.registerShellListener();
     }
 
     callServer(uri) {
         return this.http.fetch(uri)
         .then(response => response.json())
         .then(responseObject => {
-            console.log(responseObject);
-            this.result = responseObject.execResult; 
+            this.consoleOutputList.push(responseObject); 
+        });
+    }
+
+    registerShellListener() {
+        this.socket.on('shellLog', (consoleOutput) =>{
+            this.consoleOutputList.push(consoleOutput);
         });
     }
 }
