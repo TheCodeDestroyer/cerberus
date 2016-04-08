@@ -1,5 +1,6 @@
 import fs from 'fs';
 import del from 'del';
+import shell from 'shelljs';
 import gulp from 'gulp';
 import git from 'gulp-git';
 import paths from '../paths';
@@ -45,7 +46,7 @@ let pushToDeploy = () => new Promise((resolve, reject) => {
     });
 });
 
-gulp.task('deployDist', (cb) => {
+gulp.task('updateMaster', (cb) => {
     del(paths.masterClone)
     .then(() => cloneRepo())
     .then(() => del(`${paths.masterClone}/**/*`))
@@ -53,6 +54,15 @@ gulp.task('deployDist', (cb) => {
     .then(() => addAndCommitFiles())
     .then(() => pushToDeploy())
     .then(() => {
+        cb();
+    });
+});
+
+gulp.task('npmPublish', (cb) => {
+    var npmExec = shell.which('npm');
+    
+    shell.exec(`${npmExec} publish ${paths.masterClone}`, () => {
+        console.log('done');
         cb();
     });
 });
