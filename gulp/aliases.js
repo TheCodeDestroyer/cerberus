@@ -2,11 +2,15 @@ import gulp from 'gulp';
 import run from 'run-sequence';
 
 gulp.task('dev', cb => {
-    run('startServer', 'build', 'watch', cb);
+    run('startServer', 'buildWithServer', 'watch', cb);
+});
+
+gulp.task('buildWithServer', cb => {
+    run('build', 'restartServer', cb);
 });
 
 gulp.task('build', cb => {
-    run('clean', 'buildServer', 'buildPublic', 'restartServer', cb);
+    run('clean', 'buildServer', 'buildPublic', cb);
 });
 
 gulp.task('watch', cb => {
@@ -23,4 +27,8 @@ gulp.task('buildPublic', cb => {
 
 gulp.task('copy', cb => {
     run('copyViews', 'copyJspm', cb);
+});
+
+gulp.task('publishDist', cb => {
+    run('bumpVersion', 'build', 'copyNpmRequirements', 'copyPackageJson', 'updateMaster', 'npmPublish', cb);
 });
