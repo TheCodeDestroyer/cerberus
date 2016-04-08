@@ -38,6 +38,8 @@ System.register(['aurelia-framework', 'aurelia-fetch-client', 'whatwg-fetch'], f
                 Home.prototype.callServer = function callServer(uri) {
                     var _this = this;
 
+                    this.consoleOutputList = [];
+
                     return this.http.fetch(uri).then(function (response) {
                         return response.json();
                     }).then(function (responseObject) {
