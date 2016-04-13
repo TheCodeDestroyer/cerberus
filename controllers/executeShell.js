@@ -29,6 +29,12 @@ let executeShell = shellCommand => {
     childProcess.stdout.on('data', data => {
         _index.io.sockets.emit('shellLog', { timestamp: new Date().getTime(), output: data.toString() });
     });
+    childProcess.stderr.on('data', data => {
+        _index.io.sockets.emit('shellLog', { timestamp: new Date().getTime(), output: `ERROR: ${ data.toString() }` });
+    });
+    childProcess.on('close', code => {
+        _index.io.sockets.emit('shellLog', { timestamp: new Date().getTime(), output: `Execution stopped -  Code: ${ code }` });
+    });
 };
 
 exports.default = router;
