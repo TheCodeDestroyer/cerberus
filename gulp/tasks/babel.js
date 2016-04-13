@@ -18,9 +18,9 @@ gulp.task('babelServer', () => {
 });
 
 gulp.task('babelPublic', () => {
-    gulp.src(paths.srcPublicJs)
+    gulp.src(paths.srcAppJs)
     .pipe(plumber({ errorHandler: notify.onError('Error: <%= error.message %>') }))
     .pipe(babel(assign({}, babelOptions.system())))
-    .pipe(sourcemaps.write({ includeContent: false, sourceRoot: paths.srcPublic }))
-    .pipe(gulp.dest(paths.destPublic));
+    .pipe(sourcemaps.write({ includeContent: false, sourceRoot: paths.srcApp }))
+    .pipe(gulp.dest(paths.destApp));
 });

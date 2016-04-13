@@ -29,6 +29,10 @@ gulp.task('copy', cb => {
     run('copyViews', 'copyJspm', cb);
 });
 
+gulp.task('copyViews', cb => {
+    run('copyAppViews', 'copyIndexView', cb);
+});
+
 gulp.task('publishDist', cb => {
     run('bumpVersion', 'build', 'copyNpmRequirements', 'copyPackageJson', 'updateMaster', 'npmPublish', cb);
 });

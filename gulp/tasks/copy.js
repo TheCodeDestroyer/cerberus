@@ -7,12 +7,21 @@ gulp.task('copyJspm', () => {
         './jspmConfig.js',
         './jspm_packages/**/*'
     ], { base: './' })
+    .pipe(gulp.dest(paths.destApp));
+    // .pipe(gulp.dest(paths.destPublic));
+});
+
+gulp.task('copyIndexView', () => {
+    gulp.src(`${paths.srcApp}/index.html`)
     .pipe(gulp.dest(paths.destPublic));
 });
 
-gulp.task('copyViews', () => {
-    gulp.src(paths.srcPublicHtml)
-    .pipe(gulp.dest(paths.destPublic));
+gulp.task('copyAppViews', () => {
+    gulp.src([
+        paths.srcAppHtml,
+        `!${paths.srcApp}/index.html`
+    ])
+    .pipe(gulp.dest(paths.destApp));
 });
 
 gulp.task('copyNpmRequirements', () => {

@@ -5,8 +5,8 @@ import paths from '../paths';
 gulp.task('watch', () => {
     return watch([
         paths.srcServerJs,
-        paths.srcPublicJs,
-        paths.srcPublicHtml,
+        paths.srcAppJs,
+        paths.srcAppHtml,
         paths.srcSass
     ], () => {
         console.log('server');
