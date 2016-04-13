@@ -6,8 +6,8 @@ let router = express.Router();
 
 router.get('/:rawCommand', function(req, res) {
     let command = req.params.rawCommand;
-    executeShell(command);
     res.send({ timestamp: new Date().getTime(), output: `Executed ${command}!` });
+    executeShell(command);
 });
 
 let executeShell = shellCommand => {
