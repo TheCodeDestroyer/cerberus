@@ -9,7 +9,6 @@ gulp.task('watch', () => {
         paths.srcAppHtml,
         paths.srcSass
     ], () => {
-        console.log('server');
-        gulp.start('build');
+        gulp.start('buildWithServer');
     });
 });
