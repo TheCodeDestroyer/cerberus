@@ -1,11 +1,11 @@
 {
   "name": "cerberus.js",
   "version": "0.0.24",
-  "description": "Coming soon...",
+  "description": "[WIP] Coming soon...",
   "main": "./gulp/data/bin/cerberus",
   "scripts": {
     "postinstall": "jspm install && gulp build",
-    "start": "./gulp/data/bin/cerberus",
+    "start": "gulp dev",
     "test": "gulp test"
   },
   "repository": {
@@ -41,6 +41,7 @@
     "babel-preset-es2015-loose": "^7.0.0",
     "babel-preset-es2015-node5": "^1.2.0",
     "babel-preset-stage-0": "^6.5.0",
+    "del": "^2.2.0",
     "eslint": "^2.4.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
