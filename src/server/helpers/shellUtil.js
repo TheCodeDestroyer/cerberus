@@ -1,25 +1,51 @@
 import shell from 'shelljs';
+import _ from 'lodash';
 import {io} from '../index';
+import ShellLog from '../models/ShellLog';
+import eventEmitter from '../middleware/eventEmitter';
 
 let executeShell = (shellCommand) => {
     let childProcess = shell.exec(shellCommand, { async: true });
-    var processIO = io.of(`/${childProcess.pid}`);
+    const shellName = _.first(shellCommand.split(' '));
 
-    processIO.emit('shellLog', { timestamp: new Date().getTime(), output: `Executed ${shellCommand}!` });
+    ShellLog.find({ shellName: shellName, processId: { $ne: !childProcess.pid } }, (err, shellLogList) => {
+        _.forEach(shellLogList, (shellLog) => {
+            shellLog.remove();
+        });
+    });
+
+    insertLog(shellName, childProcess.pid, `Executed ${shellCommand}!`);
     childProcess.stdout.on('data', (data) => {
-        processIO.emit('shellLog', { timestamp: new Date().getTime(), output: data.toString() });
+        insertLog(shellName, childProcess.pid, data.toString());
     });
     childProcess.stderr.on('data', (data) => {
-        processIO.emit('shellLog', { timestamp: new Date().getTime(), output: `ERROR: ${data.toString()}` });
+        insertLog(shellName, childProcess.pid, data.toString());
     });
     childProcess.on('close', (code) => {
-        processIO.emit('shellLog', { timestamp: new Date().getTime(), output: `Execution stopped -  Code: ${code}` });
+        insertLog(shellName, childProcess.pid, `Execution stopped -  Code: ${code}`);
     });
-    
-    return childProcess.pid
+
+    return {
+        processId: childProcess.pid,
+        shellName: shellName
+    }
 };
 
-let shellUtil = {
+let insertLog = (shellName, processId, output) => {
+    let newShellLog = new ShellLog();
+    newShellLog.processId = processId;
+    newShellLog.shellName = shellName;
+    newShellLog.timestamp = new Date().getTime();
+    newShellLog.output = output;
+
+    newShellLog.save();
+};
+
+eventEmitter.on('cerberus:ShellLog:created', (newShellLog) => {
+    io.emit('shellLog', newShellLog);
+});
+
+const shellUtil = {
     executeShell: executeShell
 };
 
