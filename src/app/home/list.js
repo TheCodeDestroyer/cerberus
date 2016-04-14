@@ -29,7 +29,7 @@ export class Home {
         return this.http.fetch(uri)
         .then(response => response.json())
         .then(responseObject => {
-            this.consoleOutputList.push(responseObject); 
+            console.log(responseObject); 
         });
     }
 
