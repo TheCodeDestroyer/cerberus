@@ -4,14 +4,16 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import morgan from 'morgan';
 import yargs from 'yargs';
+import mongoose from 'mongoose';
+
+//APP COMPONENTS
+import controllers from './controllers';
 import socketIO from './middleware/socketIO';
 
 let app = express();
 export let server = http.createServer(app);
 export let io = socketIO.listen(server);
-
-//APP COMPONENTS
-import controllers from './controllers';
+mongoose.connect('mongodb://localhost/cerberus');
 
 const argv = yargs.argv;
 const currentEnv = process.env.NODE_ENV = argv.env || process.env.NODE_ENV || 'dev';
