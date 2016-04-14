@@ -77,3 +77,17 @@ gulp.task('publishDist', cb => {
         cb
     );
 });
+
+gulp.task('test', cb => {
+    runSequence(
+        'lint',
+        cb
+    );
+});
+
+gulp.task('lint', cb => {
+    runSequence(
+        'eslint',
+        cb
+    );
+});
