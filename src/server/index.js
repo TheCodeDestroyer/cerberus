@@ -2,13 +2,13 @@ import express from 'express';
 import http from 'http';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import socketIO from 'socket.io';
 import morgan from 'morgan';
 import yargs from 'yargs';
+import socketIO from './middleware/socketIO';
 
 let app = express();
-let server = http.createServer(app);
-export let io = socketIO(server);
+export let server = http.createServer(app);
+export let io = socketIO.listen(server);
 
 //APP COMPONENTS
 import controllers from './controllers';
@@ -27,13 +27,6 @@ app.use(controllers);
 
 server.listen(port, () => {
     console.log(`${currentEnv.toUpperCase()} - Server is listening on port ${port}`);
-});
-
-io.on('connection', (socket) => {
-    console.log('a user connected');
-    socket.on('disconnect', function() {
-        console.log('user disconnected');
-    });
 });
 
 export default app;
