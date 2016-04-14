@@ -1,38 +1,79 @@
 import gulp from 'gulp';
-import run from 'run-sequence';
+import runSequence from 'run-sequence';
 
 gulp.task('dev', cb => {
-    run('startServer', 'buildWithServer', 'watch', cb);
+    runSequence(
+        'startServer',
+        'buildWithServer',
+        'watch',
+        cb
+    );
 });
 
 gulp.task('buildWithServer', cb => {
-    run('build', 'restartServer', cb);
+    runSequence(
+        'build', 
+        'restartServer', 
+        cb
+    );
 });
 
 gulp.task('build', cb => {
-    run('clean', 'buildServer', 'buildPublic', cb);
+    runSequence(
+        'clean', 
+        'buildServer', 
+        'buildPublic', 
+        cb
+    );
 });
 
 gulp.task('watch', cb => {
-    run('watch', cb);
+    runSequence(
+        'watch', 
+        cb
+    );
 });
 
 gulp.task('buildServer', cb => {
-    run('babelServer', cb);
+    runSequence(
+        'babelServer',
+        cb
+    );
 });
 
 gulp.task('buildPublic', cb => {
-    run('babelPublic', 'sass', 'copy', cb);
+    runSequence(
+        'babelPublic',
+        'sass', 
+        'copy',
+        cb
+    );
 });
 
 gulp.task('copy', cb => {
-    run('copyViews', 'copyJspm', cb);
+    runSequence(
+        'copyViews',
+        'copyJspm',
+        cb
+    );
 });
 
 gulp.task('copyViews', cb => {
-    run('copyAppViews', 'copyIndexView', cb);
+    runSequence(
+        'copyAppViews',
+        'copyIndexView',
+        cb
+    );
 });
 
 gulp.task('publishDist', cb => {
-    run('bumpVersion', 'build', 'copyNpmRequirements', 'copyPackageJson', 'updateMaster', 'npmPublish', cb);
+    runSequence(
+        'bumpVersion',
+        'build',
+        'copyNpmRequirements',
+        'copyPackageJson',
+        'updateMaster',
+        'npmPublish',
+        cb
+    );
 });
