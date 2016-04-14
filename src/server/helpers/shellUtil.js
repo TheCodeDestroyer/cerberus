@@ -3,17 +3,20 @@ import {io} from '../index';
 
 let executeShell = (shellCommand) => {
     let childProcess = shell.exec(shellCommand, { async: true });
+    var processIO = io.of(`/${childProcess.pid}`);
 
-    io.sockets.emit('shellLog', { timestamp: new Date().getTime(), output: `Executed ${shellCommand}!` });
+    processIO.emit('shellLog', { timestamp: new Date().getTime(), output: `Executed ${shellCommand}!` });
     childProcess.stdout.on('data', (data) => {
-        io.sockets.emit('shellLog', { timestamp: new Date().getTime(), output: data.toString() });
+        processIO.emit('shellLog', { timestamp: new Date().getTime(), output: data.toString() });
     });
     childProcess.stderr.on('data', (data) => {
-        io.sockets.emit('shellLog', { timestamp: new Date().getTime(), output: `ERROR: ${data.toString()}` });
+        processIO.emit('shellLog', { timestamp: new Date().getTime(), output: `ERROR: ${data.toString()}` });
     });
     childProcess.on('close', (code) => {
-        io.sockets.emit('shellLog', { timestamp: new Date().getTime(), output: `Execution stopped -  Code: ${code}` });
+        processIO.emit('shellLog', { timestamp: new Date().getTime(), output: `Execution stopped -  Code: ${code}` });
     });
+    
+    return childProcess.pid
 };
 
 let shellUtil = {

@@ -29,11 +29,14 @@ export class Home {
         return this.http.fetch(uri)
         .then(response => response.json())
         .then(responseObject => {
-            console.log(responseObject); 
+            console.log(responseObject);
+            this.registerShellListener(responseObject.processId)
         });
     }
 
-    registerShellListener() {
+    registerShellListener(processId) {
+        this.socket = io(`/${processId}`);
+
         this.socket.on('shellLog', (consoleOutput) =>{
             this.consoleOutputList.push(consoleOutput);
         });

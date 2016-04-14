@@ -4,11 +4,9 @@ import shellUtil from '../helpers/shellUtil';
 let router = new express.Router();
 
 router.get('/:rawCommand', function(req, res) {
-    let command = req.params.rawCommand;
-    shellUtil.executeShell(command);
-    res.send({ success: true });
+    const command = req.params.rawCommand;
+    const processId = shellUtil.executeShell(command);
+    res.send({ success: true, processId: processId });
 });
-
-
 
 export default router;
