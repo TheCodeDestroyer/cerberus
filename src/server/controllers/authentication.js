@@ -1,7 +1,7 @@
 import express from 'express';
 import passport from 'passport';
 
-let router = express.Router();
+let router = new express.Router();
 let redirect = {
     successRedirect: '/',
     failureRedirect: '/login',

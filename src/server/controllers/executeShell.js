@@ -2,7 +2,7 @@ import express from 'express';
 import shell from 'shelljs';
 import {io} from '../index';
 
-let router = express.Router();
+let router = new express.Router();
 
 router.get('/:rawCommand', function(req, res) {
     let command = req.params.rawCommand;

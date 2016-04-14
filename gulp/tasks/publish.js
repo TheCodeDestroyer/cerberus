@@ -59,7 +59,7 @@ gulp.task('updateMaster', (cb) => {
 });
 
 gulp.task('npmPublish', (cb) => {
-    var npmExec = shell.which('npm');
+    const npmExec = shell.which('npm');
     
     shell.exec(`${npmExec} publish ${paths.masterClone}`, () => {
         cb();

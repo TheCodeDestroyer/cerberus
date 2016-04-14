@@ -2,7 +2,7 @@ import express from 'express';
 
 import executeShell from './executeShell';
 
-let router = express.Router();
+let router = new express.Router();
 
 router.use('/executeShell', executeShell);
 

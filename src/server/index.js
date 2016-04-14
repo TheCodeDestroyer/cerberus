@@ -2,13 +2,13 @@ import express from 'express';
 import http from 'http';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import socket from 'socket.io';
+import socketIO from 'socket.io';
 import morgan from 'morgan';
 import yargs from 'yargs';
 
 let app = express();
 let server = http.createServer(app);
-export let io = socket(server);
+export let io = socketIO(server);
 
 //APP COMPONENTS
 import controllers from './controllers';
@@ -31,7 +31,7 @@ server.listen(port, () => {
 
 io.on('connection', (socket) => {
     console.log('a user connected');
-    socket.on('disconnect', function(){
+    socket.on('disconnect', function() {
         console.log('user disconnected');
     });
 });
