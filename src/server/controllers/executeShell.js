@@ -1,6 +1,6 @@
 import express from 'express';
 
-import shellUtil from '../core/shellUtil';
+import shellUtil from '../helpers/shellUtil';
 
 
 let router = new express.Router();
