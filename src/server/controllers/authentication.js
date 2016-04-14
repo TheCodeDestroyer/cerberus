@@ -8,7 +8,7 @@ let redirect = {
     failureFlash: 'Invalid username or password.',
     successFlash: 'Welcome!'
 };
-router.post('/', passport.authenticate('local', redirect), function(req, res) {
+router.post('/', passport.authenticate('local', redirect), (req, res) => {
 });
 
 export default router;
