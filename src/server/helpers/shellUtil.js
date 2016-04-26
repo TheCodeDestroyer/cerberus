@@ -1,5 +1,6 @@
 import shell from 'shelljs';
 import _ from 'lodash';
+
 import {io} from '../index';
 import ShellLog from '../models/ShellLog';
 import eventEmitter from '../middleware/eventEmitter';
@@ -8,8 +9,8 @@ let executeShell = (shellCommand) => {
     let childProcess = shell.exec(shellCommand, { async: true });
     const shellName = _.first(shellCommand.split(' '));
 
-    ShellLog.find({ shellName: shellName, processId: { $ne: !childProcess.pid } }, (err, shellLogList) => {
-        _.forEach(shellLogList, (shellLog) => {
+    ShellLog.find({ shellName: shellName, processId: { $ne: !childProcess.pid } }, (err, results) => {
+        _.forEach(results, (shellLog) => {
             shellLog.remove();
         });
     });
