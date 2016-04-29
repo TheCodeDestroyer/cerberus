@@ -1,17 +1,15 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-fetch-client';
-// import io from 'socket.io-client';
+import {Router} from 'aurelia-router';
 import 'whatwg-fetch';
 
-@inject(HttpClient)
+@inject(HttpClient, Router)
 export class Home {
     heading = 'Home';
     consoleOutputList = [];
-    socket = undefined;
+    appRouter = {};
 
-    constructor(http) {
-        this.socket = io();
-        
+    constructor(http, router) {
         http.configure(config => {
             config
             .useStandardConfiguration()
@@ -19,13 +17,20 @@ export class Home {
         });
 
         this.http = http;
+        this.appRouter = router;
+    }
 
-        this.registerShellListener();
+    activate() {
+        let socket = io();
+
+        socket.on('shellLog', (consoleOutput) => {
+            this.consoleOutputList.push(consoleOutput);
+        });
     }
 
     callServer(uri) {
         this.consoleOutputList = [];
-        
+
         return this.http.fetch(uri)
         .then(response => response.json())
         .then(responseObject => {
@@ -33,9 +38,8 @@ export class Home {
         });
     }
 
-    registerShellListener() {
-        this.socket.on('shellLog', (consoleOutput) =>{
-            this.consoleOutputList.push(consoleOutput);
-        });
+    editScript(scriptId) {
+        this.appRouter.navigateToRoute('script', { id: scriptId })
     }
+
 }
