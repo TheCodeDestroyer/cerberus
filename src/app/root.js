@@ -1,4 +1,4 @@
-export class App {
+export class Root {
     configureRouter(config, router) {
         config.title = 'Cerberus';
         config.map([
