@@ -19,6 +19,9 @@ section {
     -webkit-animation: fadeInRight 1s;
     animation: fadeInRight 1s; }
 
+textarea {
+  resize: none; }
+
 .navbar-nav li.loader {
   margin: 12px 24px 0 6px; }
 
@@ -133,4 +136,5 @@ div.au-stagger {
   margin-top: 10px; }
 
 .button-spacing {
-  margin: 5px; }
+  margin-left: 5px;
+  margin-right: 5px; }

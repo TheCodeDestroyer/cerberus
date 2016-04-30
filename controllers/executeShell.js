@@ -8,33 +8,25 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
-var _shelljs = require('shelljs');
+var _shellUtil = require('../helpers/shellUtil');
 
-var _shelljs2 = _interopRequireDefault(_shelljs);
+var _shellUtil2 = _interopRequireDefault(_shellUtil);
 
-var _index = require('../index');
+var _Script = require('../models/Script');
+
+var _Script2 = _interopRequireDefault(_Script);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-let router = _express2.default.Router();
+let router = new _express2.default.Router();
 
-router.get('/:rawCommand', function (req, res) {
-    let command = req.params.rawCommand;
-    res.send({ timestamp: new Date().getTime(), output: `Executed ${ command }!` });
-    executeShell(command);
+router.get('/:scriptId', (req, res) => {
+    const scriptId = req.params.scriptId;
+
+    _Script2.default.findOne({ _id: scriptId }, (err, script) => {
+        let processInfo = _shellUtil2.default.executeShell(script);
+        res.send({ success: true, processId: processInfo.processId, shellName: processInfo.shellName });
+    });
 });
-
-let executeShell = shellCommand => {
-    let childProcess = _shelljs2.default.exec(shellCommand, { async: true });
-    childProcess.stdout.on('data', data => {
-        _index.io.sockets.emit('shellLog', { timestamp: new Date().getTime(), output: data.toString() });
-    });
-    childProcess.stderr.on('data', data => {
-        _index.io.sockets.emit('shellLog', { timestamp: new Date().getTime(), output: `ERROR: ${ data.toString() }` });
-    });
-    childProcess.on('close', code => {
-        _index.io.sockets.emit('shellLog', { timestamp: new Date().getTime(), output: `Execution stopped -  Code: ${ code }` });
-    });
-};
 
 exports.default = router;

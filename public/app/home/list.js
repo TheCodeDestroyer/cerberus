@@ -1,7 +1,7 @@
 'use strict';
 
-System.register(['aurelia-framework', 'aurelia-fetch-client', 'whatwg-fetch'], function (_export, _context) {
-    var inject, HttpClient, _dec, _class, Home;
+System.register(['aurelia-framework', 'aurelia-fetch-client', 'aurelia-router', 'whatwg-fetch'], function (_export, _context) {
+    var inject, HttpClient, Router, _dec, _class, Home;
 
     function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor)) {
@@ -14,45 +14,56 @@ System.register(['aurelia-framework', 'aurelia-fetch-client', 'whatwg-fetch'], f
             inject = _aureliaFramework.inject;
         }, function (_aureliaFetchClient) {
             HttpClient = _aureliaFetchClient.HttpClient;
+        }, function (_aureliaRouter) {
+            Router = _aureliaRouter.Router;
         }, function (_whatwgFetch) {}],
         execute: function () {
-            _export('Home', Home = (_dec = inject(HttpClient), _dec(_class = function () {
-                function Home(http) {
+            _export('Home', Home = (_dec = inject(HttpClient, Router), _dec(_class = function () {
+                function Home(http, router) {
                     _classCallCheck(this, Home);
 
                     this.heading = 'Home';
+                    this.scriptList = [];
                     this.consoleOutputList = [];
-                    this.socket = undefined;
-
-                    this.socket = io();
+                    this.appRouter = {};
 
                     http.configure(function (config) {
-                        config.useStandardConfiguration().withBaseUrl('/executeShell');
+                        config.useStandardConfiguration();
                     });
 
                     this.http = http;
-
-                    this.registerShellListener();
+                    this.appRouter = router;
                 }
 
-                Home.prototype.callServer = function callServer(uri) {
+                Home.prototype.activate = function activate() {
                     var _this = this;
 
-                    this.consoleOutputList = [];
+                    var socket = io();
 
-                    return this.http.fetch(uri).then(function (response) {
+                    socket.on('shellLog', function (consoleOutput) {
+                        _this.consoleOutputList.push(consoleOutput);
+                    });
+
+                    this.http.fetch('script').then(function (response) {
                         return response.json();
                     }).then(function (responseObject) {
-                        _this.consoleOutputList.push(responseObject);
+                        _this.scriptList = responseObject.data;
+                        console.log(responseObject);
                     });
                 };
 
-                Home.prototype.registerShellListener = function registerShellListener() {
-                    var _this2 = this;
+                Home.prototype.executeShell = function executeShell(name) {
+                    this.consoleOutputList = [];
 
-                    this.socket.on('shellLog', function (consoleOutput) {
-                        _this2.consoleOutputList.push(consoleOutput);
+                    this.http.fetch('executeShell/' + name).then(function (response) {
+                        return response.json();
+                    }).then(function (responseObject) {
+                        console.log(responseObject);
                     });
+                };
+
+                Home.prototype.editScript = function editScript(scriptId) {
+                    this.appRouter.navigateToRoute('script', { id: scriptId });
                 };
 
                 return Home;

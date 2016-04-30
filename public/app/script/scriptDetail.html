@@ -1,0 +1,23 @@
+<template>
+    <section>
+        <div class="container">
+            <h1>${heading} - ${scriptModel.name}</h1>
+            <form submit.trigger="submit()">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input class="form-control" type="text" value.bind="scriptModel.name">
+                </div>
+                <div class="form-group">
+                    <label>Type</label>
+                    <input class="form-control" type="text" value.bind="scriptModel.type">
+                </div>
+                <div class="form-group">
+                    <label>Executable Data</label>
+                    <textarea rows="18" class="form-control" value.bind="scriptModel.executableData"></textarea>
+                </div>
+                <button class="btn btn-success" type="submit">Save</button>
+                <button click.trigger="cancel()"  class="btn btn-danger" type="button">Cancel</button>
+            </form>
+        </div>
+    </section>
+</template>

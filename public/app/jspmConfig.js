@@ -13,8 +13,8 @@ System.config({
     "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.2.2",
     "aurelia/framework": "github:aurelia/framework@0.18.0",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
-    "font-awesome": "npm:font-awesome@4.5.0",
-    "moment": "npm:moment@2.12.0",
+    "font-awesome": "npm:font-awesome@4.6.1",
+    "moment": "npm:moment@2.13.0",
     "whatwg-fetch": "npm:whatwg-fetch@0.11.0",
     "github:aurelia/binding@0.11.4": {
       "aurelia-metadata": "github:aurelia/metadata@0.10.1",
@@ -75,7 +75,7 @@ System.config({
       "util": "npm:util@0.10.3"
     },
     "github:twbs/bootstrap@3.3.6": {
-      "jquery": "github:components/jquery@2.2.1"
+      "jquery": "npm:jquery@2.2.3"
     },
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
@@ -201,8 +201,8 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
-    "npm:font-awesome@4.5.0": {
-      "css": "github:systemjs/plugin-css@0.1.20"
+    "npm:font-awesome@4.6.1": {
+      "css": "github:systemjs/plugin-css@0.1.21"
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
