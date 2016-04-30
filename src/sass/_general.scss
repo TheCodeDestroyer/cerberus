@@ -24,6 +24,10 @@ section {
     }
 }
 
+textarea {
+    resize: none;
+}
+
 .navbar-nav li.loader {
     margin: 12px 24px 0 6px;
 }
