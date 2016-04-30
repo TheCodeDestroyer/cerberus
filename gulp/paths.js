@@ -19,7 +19,8 @@ const paths = {
     srcServerJs: `${corePaths.src}/${corePaths.server}/**/*.js`,
     srcAppJs: `${corePaths.src}/${corePaths.app}/**/*.js`,
     srcAppHtml: `${corePaths.src}/${corePaths.app}/**/*.html`,
-    srcSass: `${corePaths.src}/${corePaths.sass}/main.scss`,
+    srcSass: `${corePaths.src}/${corePaths.sass}/**/*.scss`,
+    srcSassMain: `${corePaths.src}/${corePaths.sass}/main.scss`,
     destSass: `${corePaths.dest}/${corePaths.public}/${corePaths.css}`,
     masterClone: '.masterClone'
 };
