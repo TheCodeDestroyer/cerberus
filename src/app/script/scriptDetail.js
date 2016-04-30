@@ -5,20 +5,20 @@ import 'whatwg-fetch';
 @inject(HttpClient)
 export class ScriptDetail {
     heading = 'Script Detail';
-    scriptId = '';
+    scriptName = '';
 
     constructor(http) {
         http.configure(config => {
             config
             .useStandardConfiguration()
-            .withBaseUrl('/executeShell');
+            .withBaseUrl('/script');
         });
 
         this.http = http;
     }
     
     activate(params) {
-        this.scriptId = params.id; 
+        this.scriptName = params.name; 
     }
 
 }
