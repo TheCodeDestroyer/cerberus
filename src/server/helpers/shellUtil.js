@@ -5,30 +5,28 @@ import {io} from '../index';
 import ShellLog from '../models/ShellLog';
 import eventEmitter from '../middleware/eventEmitter';
 
-let executeShell = (shellCommand) => {
-    let childProcess = shell.exec(shellCommand, { async: true });
-    const shellName = _.first(shellCommand.split(' '));
-
-    ShellLog.find({ shellName: shellName, processId: { $ne: !childProcess.pid } }, (err, results) => {
+let executeShell = (script) => {
+    let childProcess = shell.exec(`eval ${script.executableData}`, { async: true });
+    ShellLog.find({ shellName: script.name, processId: { $ne: !childProcess.pid } }, (err, results) => {
         _.forEach(results, (shellLog) => {
             shellLog.remove();
         });
     });
 
-    insertLog(shellName, childProcess.pid, `Executed ${shellCommand}!`);
+    insertLog(script.name, childProcess.pid, `Executed ${script.name}!`);
     childProcess.stdout.on('data', (data) => {
-        insertLog(shellName, childProcess.pid, data.toString());
+        insertLog(script.name, childProcess.pid, data.toString());
     });
     childProcess.stderr.on('data', (data) => {
-        insertLog(shellName, childProcess.pid, data.toString());
+        insertLog(script.name, childProcess.pid, data.toString());
     });
     childProcess.on('close', (code) => {
-        insertLog(shellName, childProcess.pid, `Execution stopped -  Code: ${code}`);
+        insertLog(script.name, childProcess.pid, `Execution stopped -  Code: ${code}`);
     });
 
     return {
         processId: childProcess.pid,
-        shellName: shellName
+        shellName: script.name
     }
 };
 
