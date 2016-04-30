@@ -45,8 +45,8 @@ export class Home {
         });
     }
 
-    editScript(scriptName) {
-        this.appRouter.navigateToRoute('script', { name: scriptName })
+    editScript(scriptId) {
+        this.appRouter.navigateToRoute('script', { id: scriptId })
     }
 
 }

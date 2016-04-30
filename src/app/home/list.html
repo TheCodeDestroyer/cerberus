@@ -5,7 +5,7 @@
 
         <div class="container">
             <div class="row row-spacing">
-                <button click.trigger="editScript('')" type="button" class="btn btn-success">
+                <button click.trigger="editScript(-1)" type="button" class="btn btn-success">
                     Add New Script
                 </button>
             </div>
@@ -18,10 +18,10 @@
                         <ul class="list-group">
                             <li repeat.for="script of scriptList" class="list-group-item">
                                 <span>${script.name}</span>
-                                <button click.trigger="editScript(script.name)" type="button" class="btn btn-sm btn-success button-padding button-spacing pull-right">
+                                <button click.trigger="editScript(script._id)" type="button" class="btn btn-sm btn-success button-padding button-spacing pull-right">
                                     Edit
                                 </button>
-                                <button click.trigger="executeShell(script.name)" type="button" class="btn btn-sm btn-info button-padding button-spacing pull-right">
+                                <button click.trigger="executeShell(script._id)" type="button" class="btn btn-sm btn-info button-padding button-spacing pull-right">
                                     Execute
                                 </button>
                             </li>
