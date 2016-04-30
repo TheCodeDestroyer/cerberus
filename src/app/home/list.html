@@ -2,20 +2,32 @@
     <require from="../common/converters/dateFormat"></require>
 
     <section>
-        <button click.trigger="editScript(-1)" type="button" class="btn btn-lg btn-succss col-md-4 col-sm-12 button-spacing">
-            Add New Script
-        </button>
+
         <div class="container">
             <div class="row row-spacing">
-                <button click.trigger="callServer('/runKodi')" type="button" class="btn btn-lg btn-info col-md-4 col-sm-12 button-spacing">
-                    Kodi
+                <button click.trigger="editScript('')" type="button" class="btn btn-success">
+                    Add New Script
                 </button>
-                <button click.trigger="callServer('/runMoonlight')" type="button" class="btn btn-lg btn-info col-md-3 col-sm-12 button-spacing">
-                    Moonlight
-                </button>
-                <button click.trigger="callServer('/node --version')" type="button" class="btn btn-lg btn-info col-md-4 col-sm-12 button-spacing">
-                    Node Version
-                </button>
+            </div>
+            <div class="row row-spacing">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Script List</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li repeat.for="script of scriptList" class="list-group-item">
+                                <span>${script.name}</span>
+                                <button click.trigger="editScript(script.name)" type="button" class="btn btn-sm btn-success button-padding button-spacing pull-right">
+                                    Edit
+                                </button>
+                                <button click.trigger="executeShell(script.name)" type="button" class="btn btn-sm btn-info button-padding button-spacing pull-right">
+                                    Execute
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <div class="row row-spacing">

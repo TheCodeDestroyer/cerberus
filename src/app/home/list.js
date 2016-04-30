@@ -6,14 +6,14 @@ import 'whatwg-fetch';
 @inject(HttpClient, Router)
 export class Home {
     heading = 'Home';
+    scriptList = [];
     consoleOutputList = [];
     appRouter = {};
 
     constructor(http, router) {
         http.configure(config => {
             config
-            .useStandardConfiguration()
-            .withBaseUrl('/executeShell');
+            .useStandardConfiguration();
         });
 
         this.http = http;
@@ -26,20 +26,27 @@ export class Home {
         socket.on('shellLog', (consoleOutput) => {
             this.consoleOutputList.push(consoleOutput);
         });
+
+        this.http.fetch(`script`)
+        .then(response => response.json())
+        .then(responseObject => {
+            this.scriptList = responseObject.data;
+            console.log(responseObject);
+        });
     }
 
-    callServer(uri) {
+    executeShell(name) {
         this.consoleOutputList = [];
 
-        return this.http.fetch(uri)
+        this.http.fetch(`executeShell/${name}`)
         .then(response => response.json())
         .then(responseObject => {
             console.log(responseObject);
         });
     }
 
-    editScript(scriptId) {
-        this.appRouter.navigateToRoute('script', { id: scriptId })
+    editScript(scriptName) {
+        this.appRouter.navigateToRoute('script', { name: scriptName })
     }
 
 }
