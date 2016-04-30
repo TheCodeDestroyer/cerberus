@@ -10,10 +10,10 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:scriptName', (req, res) => {
-    const scriptName = req.params.scriptName;
+router.get('/:scriptId', (req, res) => {
+    const scriptId = req.params.scriptId;
     
-    Script.find({ name: scriptName }, (err, script) => {
+    Script.findOne({ _id: scriptId }, (err, script) => {
         res.send({ success: true, data: script });
     });
 });
@@ -31,11 +31,11 @@ router.post('/', (req, res) => {
     res.send({ success: true, data: newScript });
 });
 
-router.put('/:scriptName', (req, res) => {
-    const scriptName = req.params.scriptName;
+router.put('/:scriptId', (req, res) => {
+    const scriptId = req.params.scriptId;
     let rawScriptData = req.body;
 
-    Script.update({ name: scriptName }, {
+    Script.update({ _id: scriptId }, {
             name: rawScriptData.name,
             executableData: rawScriptData.executableData,
             type: rawScriptData.type
