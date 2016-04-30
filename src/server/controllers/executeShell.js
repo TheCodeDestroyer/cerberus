@@ -4,10 +4,10 @@ import Script from '../models/Script';
 
 let router = new express.Router();
 
-router.get('/:scriptName', (req, res) => {
-    const scriptName = req.params.scriptName;
+router.get('/:scriptId', (req, res) => {
+    const scriptId = req.params.scriptId;
 
-    Script.findOne({ name: scriptName }, (err, script) => {
+    Script.findOne({ _id: scriptId }, (err, script) => {
         let processInfo = shellUtil.executeShell(script);
         res.send({ success: true, processId: processInfo.processId, shellName: processInfo.shellName });
     });
