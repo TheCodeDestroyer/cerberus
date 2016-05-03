@@ -5,7 +5,7 @@ import Script from '../models/script';
 let router = new express.Router();
 
 router.get('/', (req, res) => {
-    Script.find({}, (err, scripts) => {
+    Script.find((err, scripts) => {
         res.send({ success: true, data: scripts });
     });
 });
