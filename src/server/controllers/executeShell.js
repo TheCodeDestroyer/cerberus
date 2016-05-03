@@ -1,6 +1,6 @@
 import express from 'express';
 import shellUtil from '../helpers/shellUtil';
-import Script from '../models/Script';
+import Script from '../models/script';
 
 let router = new express.Router();
 

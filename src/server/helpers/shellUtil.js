@@ -2,7 +2,7 @@ import shell from 'shelljs';
 import _ from 'lodash';
 
 import {io} from '../index';
-import ShellLog from '../models/ShellLog';
+import ShellLog from '../models/shellLog';
 import eventEmitter from '../middleware/eventEmitter';
 
 let executeShell = (script) => {
