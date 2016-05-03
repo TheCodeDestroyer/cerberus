@@ -26,9 +26,13 @@ router.post('/', (req, res) => {
     newScript.executableData = rawScriptData.executableData;
     newScript.type = rawScriptData.type;
 
-    newScript.save();
+    newScript.save((err, user) => {
+        if (err) {
+            res.send({ success: false, data: err });
+        }
+        res.send({ success: true, data: user });
+    });
 
-    res.send({ success: true, data: newScript });
 });
 
 router.put('/:scriptId', (req, res) => {
