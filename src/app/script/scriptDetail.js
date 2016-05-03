@@ -12,7 +12,7 @@ export class ScriptDetail {
         http.configure(config => {
             config
             .useStandardConfiguration()
-            .withBaseUrl('/script');
+            .withBaseUrl('/api/script');
         });
 
         this.http = http;

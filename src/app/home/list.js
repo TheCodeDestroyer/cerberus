@@ -13,7 +13,8 @@ export class Home {
     constructor(http, router) {
         http.configure(config => {
             config
-            .useStandardConfiguration();
+            .useStandardConfiguration()
+            .withBaseUrl('/api');
         });
 
         this.http = http;
