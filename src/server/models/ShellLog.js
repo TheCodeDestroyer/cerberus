@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import eventEmitter from '../middleware/eventEmitter';
 
+const modelName = 'ShellLog';
 let Schema = mongoose.Schema;
 let shellLogSchema = new Schema({
     processId:  Number,
@@ -10,7 +11,7 @@ let shellLogSchema = new Schema({
 });
 
 shellLogSchema.post('save', (shellLog) => {
-    eventEmitter.emit('cerberus:ShellLog:created', shellLog);
+    eventEmitter.emit(`cerberus:${modelName}:created`, shellLog);
 });
 
-export default mongoose.model('ShellLog', shellLogSchema, 'ShellLog');
+export default mongoose.model(modelName, shellLogSchema, modelName);

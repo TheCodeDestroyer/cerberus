@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+const modelName = 'Script';
 let Schema = mongoose.Schema;
 let scriptSchema = new Schema({
     name:  String,
@@ -7,4 +8,4 @@ let scriptSchema = new Schema({
     type: Number
 });
 
-export default mongoose.model('Script', scriptSchema, 'Script');
+export default mongoose.model(modelName, scriptSchema, modelName);
