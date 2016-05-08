@@ -5,6 +5,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import yargs from 'yargs';
 import mongoose from 'mongoose';
+import session from 'express-session';
 
 //APP COMPONENTS
 import controllers from './controllers';
@@ -24,6 +25,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(morgan('dev'));
+app.use(session({
+    secret: 'super_secret_session_key', //TODO: Update to proper one later
+    saveUninitialized: true,
+    resave: true
+}));
 
 app.use(controllers);
 
