@@ -1,7 +1,7 @@
 import express from 'express';
 
 import Script from '../models/script';
-import isAuthenticated from './auth';
+import {isAuthenticated} from './auth';
 
 let router = new express.Router();
 
