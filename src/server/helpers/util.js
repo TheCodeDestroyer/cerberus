@@ -13,4 +13,3 @@ export let uid = (len) => {
 
     return buf.join('');
 };
-
