@@ -8,7 +8,7 @@ let userSchema = new Schema({
     password: { type: String,  required: true }
 });
 
-//TODO: Fix this crap
+//TODO: Fix this crap...somehow
 userSchema.methods.verifyPassword = function(password, cb) {
     let user = this;
 
