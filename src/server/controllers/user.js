@@ -1,25 +1,25 @@
 import express from 'express';
 
 import User from '../models/user';
+import {authenticateJwt} from './auth';
 
 let router = new express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', authenticateJwt, (req, res) => {
     User.find((err, users) => {
         res.send({ success: true, data: users });
     });
 });
 
-router.get('/:userId', (req, res) => {
+router.get('/:userId', authenticateJwt, (req, res) => {
     const userId = req.params.userId;
-    
+
     User.findOne({ _id: userId }, (err, user) => {
         res.send({ success: true, data: user });
     });
 });
 
-//TODO: Uncomment after testing
-router.post('/', (req, res) => {
+router.post('/', authenticateJwt, (req, res) => {
     let rawUserData = req.body;
     let newUser = new User();
 
@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/:userId', (req, res) => {
+router.put('/:userId', authenticateJwt, (req, res) => {
     const userId = req.params.userId;
     let rawUserData = req.body;
 
