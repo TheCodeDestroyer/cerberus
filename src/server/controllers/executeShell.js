@@ -1,11 +1,10 @@
 import express from 'express';
 import shellUtil from '../helpers/shellUtil';
 import Script from '../models/script';
-import {isAuthenticated} from './auth';
 
 let router = new express.Router();
 
-router.get('/:scriptId', isAuthenticated, (req, res) => {
+router.get('/:scriptId', (req, res) => {
     const scriptId = req.params.scriptId;
 
     Script.findOne({ _id: scriptId }, (err, script) => {
