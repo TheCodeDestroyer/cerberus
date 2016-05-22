@@ -1,17 +1,16 @@
 import express from 'express';
 
 import Script from '../models/script';
-import {isAuthenticated} from './auth';
 
 let router = new express.Router();
 
-router.get('/', isAuthenticated,  (req, res) => {
+router.get('/',  (req, res) => {
     Script.find((err, scripts) => {
         res.send({ success: true, data: scripts });
     });
 });
 
-router.get('/:scriptId', isAuthenticated, (req, res) => {
+router.get('/:scriptId', (req, res) => {
     const scriptId = req.params.scriptId;
     
     Script.findOne({ _id: scriptId }, (err, script) => {
@@ -19,7 +18,7 @@ router.get('/:scriptId', isAuthenticated, (req, res) => {
     });
 });
 
-router.post('/', isAuthenticated, (req, res) => {
+router.post('/', (req, res) => {
     let rawScriptData = req.body;
     let newScript = new Script();
 
@@ -36,7 +35,7 @@ router.post('/', isAuthenticated, (req, res) => {
 
 });
 
-router.put('/:scriptId', isAuthenticated, (req, res) => {
+router.put('/:scriptId', (req, res) => {
     const scriptId = req.params.scriptId;
     let rawScriptData = req.body;
 
