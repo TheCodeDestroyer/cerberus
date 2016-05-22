@@ -1,17 +1,16 @@
 import express from 'express';
 
 import User from '../models/user';
-import {isAuthenticated} from './auth';
 
 let router = new express.Router();
 
-router.get('/', isAuthenticated, (req, res) => {
+router.get('/', (req, res) => {
     User.find((err, users) => {
         res.send({ success: true, data: users });
     });
 });
 
-router.get('/:userId', isAuthenticated, (req, res) => {
+router.get('/:userId', (req, res) => {
     const userId = req.params.userId;
     
     User.findOne({ _id: userId }, (err, user) => {
@@ -20,7 +19,7 @@ router.get('/:userId', isAuthenticated, (req, res) => {
 });
 
 //TODO: Uncomment after testing
-router.post('/'/*, isAuthenticated*/, (req, res) => {
+router.post('/', (req, res) => {
     let rawUserData = req.body;
     let newUser = new User();
 
@@ -35,7 +34,7 @@ router.post('/'/*, isAuthenticated*/, (req, res) => {
     });
 });
 
-router.put('/:userId', isAuthenticated, (req, res) => {
+router.put('/:userId', (req, res) => {
     const userId = req.params.userId;
     let rawUserData = req.body;
 
