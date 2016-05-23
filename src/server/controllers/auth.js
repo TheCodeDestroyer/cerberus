@@ -8,8 +8,6 @@ import User from '../models/user';
 
 let router = new express.Router();
 
-console.log(expressJwt);
-
 const serverSecret = '//TODO: store server secret properly';
 export const authenticateJwt = expressJwt({ secret: serverSecret });
 export const authenticateLocal = passport.authenticate(['local'], { session: false });
