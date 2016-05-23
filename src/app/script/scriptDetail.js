@@ -30,7 +30,6 @@ export class ScriptDetail {
             .then(response => response.json())
             .then(responseObject => {
                 this.scriptModel = responseObject.data;
-                console.log(responseObject);
             });
         }
     }
