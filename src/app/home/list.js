@@ -32,18 +32,12 @@ export class Home {
         .then(response => response.json())
         .then(responseObject => {
             this.scriptList = responseObject.data;
-            console.log(responseObject);
         });
     }
 
     executeShell(name) {
         this.consoleOutputList = [];
-
-        this.http.fetch(`executeShell/${name}`)
-        .then(response => response.json())
-        .then(responseObject => {
-            console.log(responseObject);
-        });
+        this.http.fetch(`executeShell/${name}`);
     }
 
     editScript(scriptId) {
