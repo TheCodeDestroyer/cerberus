@@ -28,7 +28,7 @@ export class Home {
             this.consoleOutputList.push(consoleOutput);
         });
 
-        this.http.fetch(`script`)
+        this.http.fetch('/script')
         .then(response => response.json())
         .then(responseObject => {
             this.scriptList = responseObject.data;
@@ -37,7 +37,7 @@ export class Home {
 
     executeShell(name) {
         this.consoleOutputList = [];
-        this.http.fetch(`executeShell/${name}`);
+        this.http.fetch(`/executeShell/${name}`);
     }
 
     editScript(scriptId) {
