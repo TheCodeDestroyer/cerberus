@@ -78,7 +78,6 @@
   "jspm": {
     "configFile": "jspmConfig.js",
     "dependencies": {
-      "aurelia-auth": "npm:aurelia-auth@^2.1.3",
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1.2.0",
       "aurelia-fetch-client": "npm:aurelia-fetch-client@^1.0.0-beta.1.2.0",
       "aurelia-framework": "npm:aurelia-framework@^1.0.0-beta.1.2.0",
