@@ -1,12 +1,20 @@
+import 'bootstrap';
+import {inject} from 'aurelia-framework';
+import {Router} from 'aurelia-router';
+import {FetchConfig} from 'aurelia-auth';
+import AppRouterConfig from './common/config/routerConfig';
+
+@inject(Router, FetchConfig, AppRouterConfig)
 export class Root {
-    configureRouter(config, router) {
-        config.title = 'Cerberus';
 
-        config.map([
-            { route: ['', 'home'], name: 'home', moduleId: './home/list', nav: false, title: 'Home' },
-            { route: 'script/:id', name: 'script', moduleId: './script/scriptDetail', nav: false, title: 'Script' }
-        ]);
-
+    constructor(router, fetchConfig, appRouterConfig) {
         this.router = router;
-    }
+        this.fetchConfig = fetchConfig;
+        this.appRouterConfig = appRouterConfig;
+    };
+
+    activate() {
+        this.fetchConfig.configure();
+        this.appRouterConfig.configure();
+    };
 }
