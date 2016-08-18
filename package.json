@@ -2,6 +2,10 @@
   "name": "cerberus.js",
   "version": "0.0.27",
   "description": "[WIP] Coming soon...",
+  "engines": {
+    "node": "^6.4.0",
+    "npm" : "^3.10.7"
+  },
   "main": "./gulp/data/bin/cerberus",
   "scripts": {
     "postinstall": "jspm install && gulp build",
