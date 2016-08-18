@@ -7,7 +7,7 @@ export default class {
 
     constructor(router) {
         this.router = router;
-    };
+    }
 
     configure() {
         let appRouterConfig = function(config) {
@@ -22,5 +22,5 @@ export default class {
         };
 
         this.router.configure(appRouterConfig);
-    };
+    }
 }

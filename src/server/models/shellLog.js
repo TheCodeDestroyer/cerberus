@@ -4,10 +4,10 @@ import eventEmitter from '../middleware/eventEmitter';
 const modelName = 'ShellLog';
 let Schema = mongoose.Schema;
 let shellLogSchema = new Schema({
-    processId:  Number,
-    shellName:  String,
+    processId: Number,
+    shellName: String,
     timestamp: Number,
-    output:   String
+    output: String
 });
 
 shellLogSchema.post('save', (shellLog) => {

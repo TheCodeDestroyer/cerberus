@@ -19,27 +19,28 @@ const db = {
 };
 
 passport.use(new Strategy((username, password, cb) => {
-        User.findOne({ username: username }, function(err, user) {
-            if (err) {
-                return cb(err);
+    User.findOne({ username: username }, function(queryErr, user) {
+        if (queryErr) {
+            return cb(queryErr);
+        }
+        if (!user) {
+            return cb(null, false);
+        }
+
+        user.verifyPassword(password, (passErr, isMatch) => {
+            if (passErr) {
+                return cb(passErr);
             }
-            if (!user) {
+            if (!isMatch) {
                 return cb(null, false);
             }
 
-            user.verifyPassword(password, (err, isMatch) => {
-                if (err) {
-                    return cb(err);
-                }
-                if (!isMatch) {
-                    return cb(null, false);
-                }
-
-                return cb(null, user);
-            });
+            return cb(null, user);
         });
-    }
-));
+
+        return cb(null, user);
+    });
+}));
 
 let serialize = (req, res, cb) => {
     db.updateOrCreate(req.user, function(err, user) {
@@ -50,17 +51,12 @@ let serialize = (req, res, cb) => {
             id: user.id,
             username: user.username
         };
-        cb();
+        return cb();
     });
 };
 
 let generateToken = (req, res, cb) => {
-    req.token = jwt.sign({
-            id: req.user.id
-        },
-        serverSecret, {
-            expiresIn: '8h'
-        });
+    req.token = jwt.sign({ id: req.user.id }, serverSecret, { expiresIn: '8h' });
     cb();
 };
 

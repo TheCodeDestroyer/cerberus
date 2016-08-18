@@ -8,7 +8,7 @@ export class ScriptDetail {
     heading = 'Script Detail';
     scriptModel = {};
 
-    constructor(http, router, json) {
+    constructor(http, router, jsonHelper) {
         http.configure(config => {
             config
             .useStandardConfiguration()
@@ -17,7 +17,7 @@ export class ScriptDetail {
 
         this.http = http;
         this.router = router;
-        this.json = json;
+        this.json = jsonHelper;
     }
 
     activate(params) {
@@ -40,7 +40,7 @@ export class ScriptDetail {
         let uri = '';
         if (scriptModel._id) {
             methodType = 'put';
-            uri = `/${scriptModel._id}`
+            uri = `/${scriptModel._id}`;
         }
 
         this.http.fetch(uri, {
@@ -53,7 +53,7 @@ export class ScriptDetail {
     }
 
     cancel() {
-        this.router.navigate('')
+        this.router.navigate('');
     }
 
     saveScript() {

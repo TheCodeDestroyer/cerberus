@@ -10,7 +10,7 @@ export class Login {
 
     constructor(auth) {
         this.auth = auth;
-    };
+    }
 
     login() {
         let authObject = {
@@ -25,5 +25,5 @@ export class Login {
         .catch(error => {
             this.loginError = error.response;
         });
-    };
+    }
 }

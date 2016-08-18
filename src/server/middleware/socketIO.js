@@ -10,7 +10,7 @@ let listen = (server) => {
         });
     });
 
-    return io
+    return io;
 };
 
 

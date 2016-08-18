@@ -7,7 +7,7 @@ export let uid = (len) => {
     let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let charLen = chars.length;
 
-    for (var i = 0; i < len; ++i) {
+    for (let i = 0; i < len; ++i) {
         buf.push(chars[getRandomInt(0, charLen - 1)]);
     }
 

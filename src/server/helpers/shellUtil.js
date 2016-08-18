@@ -27,7 +27,7 @@ let executeShell = (script) => {
     return {
         processId: childProcess.pid,
         shellName: script.name
-    }
+    };
 };
 
 let insertLog = (shellName, processId, output) => {

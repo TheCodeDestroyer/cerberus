@@ -11,10 +11,10 @@ export class Root {
         this.router = router;
         this.fetchConfig = fetchConfig;
         this.appRouterConfig = appRouterConfig;
-    };
+    }
 
     activate() {
         this.fetchConfig.configure();
         this.appRouterConfig.configure();
-    };
+    }
 }

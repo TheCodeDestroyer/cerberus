@@ -14,24 +14,29 @@ userSchema.methods.verifyPassword = function(password, cb) {
 
     bcrypt.compare(password, user.password, (err, isMatch) => {
         if (err) { return cb(err); }
-        cb(null, isMatch);
+        return cb(null, isMatch);
     });
 };
 
+//TODO: Clean those returns up!!!
 userSchema.pre('save', function(cb) {
     let user = this;
 
     if (!user || !user.isModified('password')) { return cb(); }
 
-    bcrypt.genSalt(5, (err, salt) => {
-        if (err) { return cb(err); }
+    bcrypt.genSalt(5, (saltErr, salt) => {
+        if (saltErr) { return cb(saltErr); }
 
-        bcrypt.hash(user.password, salt, null, (err, hash) => {
-            if (err) { return cb(err); }
+        bcrypt.hash(user.password, salt, null, (hashErr, hash) => {
+            if (hashErr) { return cb(hashErr); }
             user.password = hash;
-            cb();
+            return cb();
         });
+
+        return cb();
     });
+
+    return cb();
 });
 
 export default mongoose.model(modelName, userSchema, modelName);

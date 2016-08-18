@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 const modelName = 'Script';
 let Schema = mongoose.Schema;
 let scriptSchema = new Schema({
-    name:  String,
-    executableData:  String,
+    name: String,
+    executableData: String,
     type: Number
 });
 
